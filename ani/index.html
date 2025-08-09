@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 3rd Anniversary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    /* ===== BACKGROUNDS ===== */
+    body.welcome-bg {
+      background: linear-gradient(135deg, #ffd6e0, #ffe6f0);
+      background-size: cover;
+      color: #6b4c4c;
+    }
+
+    body.main-bg {
+      background: url('pic.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Overlay for main screen only */
+    .overlay-main {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ===== GENERAL SECTIONS ===== */
+    .intro-screen, .container {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      box-sizing: border-box;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    /* ===== INTRO SCREEN ===== */
+    .intro-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1.5s ease-in-out;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .intro-screen h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    .intro-screen p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .intro-screen input {
+      padding: 12px 18px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      width: 80%;
+      max-width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .intro-screen button {
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff6f91;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+      margin: 5px;
+    }
+
+    .intro-screen button:hover {
+      background-color: #ff4e7a;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+      padding: 40px 20px;
+      animation: fadeInUp 2s ease-in-out;
+      font-family: 'Quicksand', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* Romantic glowing heading */
+    .container h1 {
+      font-size: 2.8em;
+      font-family: 'Great Vibes', cursive;
+      color: #ffeb99; /* Bright gold tone */
+      text-shadow: 
+        0 0 8px #fff,
+        0 0 15px #ffeb99,
+        0 0 25px #ffd700,
+        0 0 40px #ffae42;
+    }
+
+    /* Glowing paragraph style */
+    .container p {
+      color: #fff8dc; /* Cream color */
+      font-size: 1.2em;
+      text-shadow:
+        0 0 6px rgba(255,255,255,0.8),
+        0 0 12px rgba(255,255,224,0.6);
+      max-width: 90%;
+      margin: 0 auto 20px;
+      line-height: 1.7;
+    }
+
+    /* Highlight nickname with gradient gold */
+    .container span {
+      font-weight: bold;
+      background: linear-gradient(90deg, #ffd700, #ffae42);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 
+        0 0 6px rgba(255,215,0,0.8),
+        0 0 12px rgba(255,174,66,0.6);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== HEARTS ===== */
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% { bottom: -50px; opacity: 0; }
+      50% { opacity: 1; }
+      100% { bottom: 100vh; opacity: 0; }
+    }
+
+    /* ===== MIC BUTTON ===== */
+    .mic-button {
+      background-color: #fff;
+      color: #ff6f91;
+      border: 2px solid #ff6f91;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .mic-button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="welcome-bg">
+
+  <!-- Intro Screen -->
+  <div class="intro-screen">
+    <h2>Hey love 💕</h2>
+    <p>Enter your nickname to begin:</p>
+    <input type="text" id="nickname" placeholder="Your nickname..." />
+    <div>
+      <button onclick="startCelebration()">Start</button>
+      <button class="mic-button" onclick="startVoiceInput()">🎤</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container hidden">
+    <div class="overlay-main"></div>
+    <h1>Happy 3rd Anniversary, <span id="nameDisplay">My Love</span> 💖</h1>
+    <p id="greetingText">
+      Three years ago, I met someone who changed my world forever. Your smile, your kindness, your love — they’ve filled my life with joy and meaning.
+    </p>
+    <p>
+      Every moment with you feels like a beautiful dream, and I’m endlessly grateful for the laughter, the support, and the memories we’ve created together.
+    </p>
+    <p>
+      Here’s to us — to everything we’ve been through, and everything that’s yet to come. I love you more than words can say.
+    </p>
+    <p>
+      Forever yours,<br/>
+      ❤️ <strong>Souvik</strong>
+    </p>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 300);
+
+    function startCelebration() {
+      const nickname = document.getElementById('nickname').value.trim();
+      const nameDisplay = document.getElementById('nameDisplay');
+      const greetingText = document.getElementById('greetingText');
+
+      if (nickname) {
+        nameDisplay.textContent = nickname;
+        greetingText.textContent = `Three years ago, I met someone truly special — you, ${nickname}. Your smile, your kindness, your love — they’ve filled my life with joy and meaning.`;
+      }
+
+      document.body.classList.remove('welcome-bg');
+      document.body.classList.add('main-bg');
+
+      document.querySelector('.intro-screen').classList.add('hidden');
+      document.querySelector('.container').classList.remove('hidden');
+    }
+
+    function startVoiceInput() {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('nickname').value = transcript;
+        startCelebration();
+      };
+
+      recognition.onerror = function(event) {
+        alert('Voice recognition error: ' + event.error);
+      };
+    }
+  </script>
+</body>
+</html>
